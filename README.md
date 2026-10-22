@@ -3,14 +3,7 @@
 Fill `.env` and `items.yaml` as shown in `.env.example` and `items.yaml.example`, then run:
 
 ```bash
-docker run --rm --env-file .env -v ./config:/app/config -v ./data:/app/data -v ./items.yaml:/app/items.yaml:ro pluggy2duckdb pluggy-raw
-# or via Docker Compose:
 docker compose run --rm raw
-```
-
-```bash
-docker run --rm -v ./data:/app/data pluggy2duckdb pluggy-silver
-# or via Docker Compose:
 docker compose run --rm silver
 ```
 
