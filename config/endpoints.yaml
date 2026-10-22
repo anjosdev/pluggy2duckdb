@@ -1,0 +1,551 @@
+# Auto-generated from config/oas3.json.
+endpoints:
+  GET /connectors:
+    method: GET
+    path: /connectors
+    summary: List
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params: []
+    optional_params:
+    - countries
+    - types
+    - name
+    - sandbox
+    - healthDetails
+    - isOpenFinance
+    - supportsPaymentInitiation
+    - supportsSmartTransfers
+    - supportsAutomaticPix
+  GET /connectors/{id}:
+    method: GET
+    path: /connectors/{id}
+    summary: Retrieve
+    scope: connector
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params:
+    - healthDetails
+  GET /items/{id}:
+    method: GET
+    path: /items/{id}
+    summary: Retrieve
+    scope: item
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /items/{id}/resources:
+    method: GET
+    path: /items/{id}/resources
+    summary: List Item resources
+    scope: item
+    pagination: page
+    deprecated: false
+    required_params:
+    - id
+    optional_params:
+    - pageSize
+    - page
+    - status
+  GET /items/{id}/scr:
+    method: GET
+    path: /items/{id}/scr
+    summary: Retrieve SCR
+    scope: item
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params:
+    - from
+    - to
+  GET /consents:
+    method: GET
+    path: /consents
+    summary: List
+    scope: item
+    pagination: none
+    deprecated: false
+    required_params:
+    - itemId
+    optional_params: []
+  GET /consents/{id}:
+    method: GET
+    path: /consents/{id}
+    summary: Retrieve
+    scope: consent
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /accounts:
+    method: GET
+    path: /accounts
+    summary: List
+    scope: item
+    pagination: none
+    deprecated: false
+    required_params:
+    - itemId
+    optional_params:
+    - type
+  GET /accounts/{id}:
+    method: GET
+    path: /accounts/{id}
+    summary: Retrieve
+    scope: account
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /accounts/{id}/statements:
+    method: GET
+    path: /accounts/{id}/statements
+    summary: List account statements
+    scope: account
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /accounts/{id}/balance:
+    method: GET
+    path: /accounts/{id}/balance
+    summary: Get real-time balance
+    scope: account
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /transactions:
+    method: GET
+    path: /transactions
+    summary: List by Page (deprecated)
+    scope: account
+    pagination: page
+    deprecated: true
+    required_params:
+    - accountId
+    optional_params:
+    - ids
+    - from
+    - to
+    - pageSize
+    - page
+    - billId
+    - createdAtFrom
+  GET /v2/items:
+    method: GET
+    path: /v2/items
+    summary: List
+    scope: global
+    pagination: cursor
+    deprecated: false
+    required_params: []
+    optional_params:
+    - clientUserId
+    - connectorId
+    - after
+  GET /v2/transactions:
+    method: GET
+    path: /v2/transactions
+    summary: List
+    scope: account
+    pagination: cursor
+    deprecated: false
+    required_params:
+    - accountId
+    optional_params:
+    - ids
+    - dateFrom
+    - dateTo
+    - createdAtFrom
+    - after
+  GET /transactions/{id}:
+    method: GET
+    path: /transactions/{id}
+    summary: Retrieve
+    scope: transaction
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /investments:
+    method: GET
+    path: /investments
+    summary: List
+    scope: item
+    pagination: page
+    deprecated: false
+    required_params:
+    - itemId
+    optional_params:
+    - type
+    - pageSize
+    - page
+  GET /investments/{id}:
+    method: GET
+    path: /investments/{id}
+    summary: Retrieve
+    scope: investment
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /investments/{id}/transactions:
+    method: GET
+    path: /investments/{id}/transactions
+    summary: List investment transactions
+    scope: investment
+    pagination: page
+    deprecated: false
+    required_params:
+    - id
+    optional_params:
+    - pageSize
+    - page
+  GET /identity:
+    method: GET
+    path: /identity
+    summary: Find by item
+    scope: item
+    pagination: none
+    deprecated: false
+    required_params:
+    - itemId
+    optional_params: []
+  GET /identity/{id}:
+    method: GET
+    path: /identity/{id}
+    summary: Retrieve
+    scope: identity_detail
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /webhooks:
+    method: GET
+    path: /webhooks
+    summary: List
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params: []
+    optional_params: []
+  GET /webhooks/{id}:
+    method: GET
+    path: /webhooks/{id}
+    summary: Retrieve
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /categories:
+    method: GET
+    path: /categories
+    summary: List
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params: []
+    optional_params:
+    - parentId
+  GET /categories/{id}:
+    method: GET
+    path: /categories/{id}
+    summary: Retrieve
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /categories/rules:
+    method: GET
+    path: /categories/rules
+    summary: List Category Rules
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params: []
+    optional_params: []
+  GET /loans:
+    method: GET
+    path: /loans
+    summary: List
+    scope: item
+    pagination: none
+    deprecated: false
+    required_params:
+    - itemId
+    optional_params: []
+  GET /loans/{id}:
+    method: GET
+    path: /loans/{id}
+    summary: Retrieve
+    scope: loan
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /merchants:
+    method: GET
+    path: /merchants
+    summary: Get merchants by CNPJ list
+    scope: merchant
+    pagination: none
+    deprecated: false
+    required_params: []
+    optional_params:
+    - cnpjs
+  GET /bills:
+    method: GET
+    path: /bills
+    summary: List
+    scope: account
+    pagination: page
+    deprecated: false
+    required_params:
+    - accountId
+    optional_params:
+    - pageSize
+    - page
+  GET /bills/{id}:
+    method: GET
+    path: /bills/{id}
+    summary: Retrieve
+    scope: bill
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /payments/customers:
+    method: GET
+    path: /payments/customers
+    summary: List
+    scope: global
+    pagination: page
+    deprecated: false
+    required_params: []
+    optional_params:
+    - pageSize
+    - page
+    - name
+    - email
+    - cpf
+    - cnpj
+  GET /payments/customers/{id}:
+    method: GET
+    path: /payments/customers/{id}
+    summary: Retrieve
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /payments/recipients:
+    method: GET
+    path: /payments/recipients
+    summary: List
+    scope: global
+    pagination: page
+    deprecated: false
+    required_params: []
+    optional_params:
+    - pageSize
+    - page
+    - isDefault
+    - pixKey
+    - name
+    - taxNumber
+  GET /payments/recipients/{id}:
+    method: GET
+    path: /payments/recipients/{id}
+    summary: Retrieve
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /payments/recipients/institutions:
+    method: GET
+    path: /payments/recipients/institutions
+    summary: List Institutions
+    scope: global
+    pagination: page
+    deprecated: false
+    required_params: []
+    optional_params:
+    - pageSize
+    - page
+    - name
+  GET /payments/recipients/institutions/{id}:
+    method: GET
+    path: /payments/recipients/institutions/{id}
+    summary: Retrieve Institution
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /payments/requests:
+    method: GET
+    path: /payments/requests
+    summary: List
+    scope: global
+    pagination: page
+    deprecated: false
+    required_params: []
+    optional_params:
+    - pageSize
+    - page
+    - from
+    - to
+    - customer
+    - pixKey
+    - status
+    - clientPaymentId
+  GET /payments/requests/{id}/automatic-pix/schedules:
+    method: GET
+    path: /payments/requests/{id}/automatic-pix/schedules
+    summary: List Automatic PIX scheduled payments
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /payments/requests/{requestId}/automatic-pix/schedules/{paymentId}:
+    method: GET
+    path: /payments/requests/{requestId}/automatic-pix/schedules/{paymentId}
+    summary: Get an automatic PIX scheduled payment
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - requestId
+    - paymentId
+    optional_params: []
+  GET /payments/requests/{id}:
+    method: GET
+    path: /payments/requests/{id}
+    summary: Retrieve
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /payments/requests/{id}/schedules:
+    method: GET
+    path: /payments/requests/{id}/schedules
+    summary: List Schedules
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /payments/intents:
+    method: GET
+    path: /payments/intents
+    summary: List
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - paymentRequestId
+    optional_params: []
+  GET /payments/intents/{id}:
+    method: GET
+    path: /payments/intents/{id}
+    summary: Retrieve
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /smart-transfers/preauthorizations:
+    method: GET
+    path: /smart-transfers/preauthorizations
+    summary: List preauthorizations
+    scope: global
+    pagination: page
+    deprecated: false
+    required_params: []
+    optional_params:
+    - pageSize
+    - page
+  GET /smart-transfers/preauthorizations/{id}:
+    method: GET
+    path: /smart-transfers/preauthorizations/{id}
+    summary: Retrieve preauthorization
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /smart-transfers/preauthorizations/{id}/balance:
+    method: GET
+    path: /smart-transfers/preauthorizations/{id}/balance
+    summary: Retrieve source account balance
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /smart-transfers/preauthorizations/{id}/payments:
+    method: GET
+    path: /smart-transfers/preauthorizations/{id}/payments
+    summary: List preauthorization payments
+    scope: global
+    pagination: page
+    deprecated: false
+    required_params:
+    - id
+    optional_params:
+    - from
+    - to
+    - pageSize
+    - page
+  GET /smart-transfers/payments/{id}:
+    method: GET
+    path: /smart-transfers/payments/{id}
+    summary: Retrieve payment
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []
+  GET /boletos/{id}:
+    method: GET
+    path: /boletos/{id}
+    summary: Get Boleto
+    scope: global
+    pagination: none
+    deprecated: false
+    required_params:
+    - id
+    optional_params: []

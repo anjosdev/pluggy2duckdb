@@ -1,0 +1,206 @@
+{
+  "version": 1,
+  "tables": {
+    "accounts": {
+      "legacy_pattern": "*_accounts*.json",
+      "keys": [
+        "item_id",
+        "id"
+      ],
+      "columns": {
+        "item": "string",
+        "account": "string",
+        "item_id": "string",
+        "source_file": "string",
+        "id": "string",
+        "type": "string",
+        "subtype": "string",
+        "name": "string",
+        "balance": "decimal",
+        "currency_code": "string",
+        "number": "string",
+        "created_at": "timestamp",
+        "updated_at": "timestamp",
+        "marketing_name": "string",
+        "tax_number": "string",
+        "owner": "string",
+        "bank_data": "json",
+        "credit_data": "json"
+      }
+    },
+    "bills": {
+      "legacy_pattern": "*_account_*_bills*.json",
+      "keys": [
+        "item_id",
+        "id"
+      ],
+      "columns": {
+        "item": "string",
+        "account": "string",
+        "item_id": "string",
+        "source_file": "string",
+        "id": "string",
+        "due_date": "timestamp",
+        "bill_closing_date": "timestamp",
+        "total_amount": "decimal",
+        "total_amount_currency_code": "string",
+        "minimum_payment_amount": "decimal",
+        "allows_installments": "bool",
+        "finance_charges": "json",
+        "payments": "json",
+        "created_at": "timestamp",
+        "updated_at": "timestamp"
+      }
+    },
+    "transactions": {
+      "legacy_pattern": "*_account_*_v2_transactions*.json",
+      "keys": [
+        "item_id",
+        "id"
+      ],
+      "columns": {
+        "item": "string",
+        "account": "string",
+        "item_id": "string",
+        "source_file": "string",
+        "id": "string",
+        "description": "string",
+        "description_raw": "string",
+        "currency_code": "string",
+        "amount": "decimal",
+        "amount_in_account_currency": "decimal",
+        "date": "timestamp",
+        "category": "string",
+        "category_id": "string",
+        "balance": "decimal",
+        "account_id": "string",
+        "provider_code": "string",
+        "status": "string",
+        "payment_data": "json",
+        "type": "string",
+        "operation_type": "string",
+        "operation_type_additional_info": "string",
+        "credit_card_metadata": "json",
+        "merchant": "json",
+        "provider_id": "string",
+        "order": "int64",
+        "created_at": "timestamp",
+        "updated_at": "timestamp"
+      }
+    },
+    "investments": {
+      "legacy_pattern": "*_investments*.json",
+      "keys": [
+        "item_id",
+        "id"
+      ],
+      "columns": {
+        "item": "string",
+        "account": "string",
+        "item_id": "string",
+        "source_file": "string",
+        "id": "string",
+        "number": "string",
+        "name": "string",
+        "balance": "decimal",
+        "currency_code": "string",
+        "type": "string",
+        "subtype": "string",
+        "last_month_rate": "decimal",
+        "last_twelve_months_rate": "decimal",
+        "annual_rate": "decimal",
+        "code": "string",
+        "isin": "string",
+        "metadata": "json",
+        "value": "decimal",
+        "quantity": "decimal",
+        "amount": "decimal",
+        "taxes": "decimal",
+        "taxes2": "decimal",
+        "date": "timestamp",
+        "owner": "string",
+        "amount_profit": "decimal",
+        "amount_withdrawal": "decimal",
+        "amount_original": "decimal",
+        "due_date": "timestamp",
+        "issuer": "string",
+        "issuer_cnpj": "string",
+        "issue_date": "timestamp",
+        "purchase_date": "timestamp",
+        "grace_period_date": "timestamp",
+        "rate": "decimal",
+        "rate_type": "string",
+        "rate_periodicity": "string",
+        "indexer_additional_info": "string",
+        "fixed_annual_rate": "decimal",
+        "tax_exempt": "bool",
+        "price_factor": "decimal",
+        "debtor": "json",
+        "coupon_payment": "json",
+        "status": "string",
+        "institution": "json",
+        "created_at": "timestamp",
+        "updated_at": "timestamp"
+      }
+    },
+    "resources": {
+      "legacy_pattern": "*_resources*.json",
+      "keys": [
+        "item_id",
+        "type",
+        "resource_id"
+      ],
+      "columns": {
+        "item": "string",
+        "account": "string",
+        "item_id": "string",
+        "source_file": "string",
+        "resource_id": "string",
+        "type": "string",
+        "status": "string"
+      }
+    },
+    "identities": {
+      "legacy_pattern": "*_identity.json",
+      "keys": [
+        "item_id",
+        "id"
+      ],
+      "columns": {
+        "item": "string",
+        "account": "string",
+        "item_id": "string",
+        "source_file": "string",
+        "id": "string",
+        "created_at": "timestamp",
+        "updated_at": "timestamp",
+        "birth_date": "string",
+        "tax_number": "string",
+        "document": "string",
+        "document_type": "string",
+        "job_title": "string",
+        "company_name": "string",
+        "full_name": "string",
+        "phone_numbers": "json",
+        "emails": "json",
+        "addresses": "json",
+        "relations": "json",
+        "investor_profile": "string",
+        "establishment_code": "string",
+        "establishment_name": "string",
+        "financial_relationships": "json",
+        "qualifications": "json",
+        "social_name": "string",
+        "sex": "string",
+        "marital_status": "json",
+        "nationality": "json",
+        "other_documents": "json",
+        "passport": "json",
+        "incorporation_date": "string",
+        "parties": "json",
+        "business_other_documents": "json",
+        "companies_cnpj": "json"
+      }
+    }
+  }
+}

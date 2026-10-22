@@ -1,0 +1,28 @@
+services:
+  config:
+    build: .
+    volumes:
+      - ./config:/app/config
+    entrypoint: ["uv", "run", "pluggy-raw", "--generate-config"]
+  raw:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+      - ./items.yaml:/app/items.yaml:ro
+    entrypoint: ["uv", "run", "pluggy-raw"]
+  silver:
+    build: .
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+      - ./items.yaml:/app/items.yaml:ro
+      - ./pluggy2duckdb:/app/pluggy2duckdb
+    entrypoint: ["uv", "run", "pluggy-silver"]
+  test:
+    build: .
+    volumes:
+      - ./config:/app/config
+    entrypoint: ["uv", "run", "pytest", "-v"]
