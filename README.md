@@ -38,7 +38,7 @@ Python callers can use
 `run_transactions_clean(input_path, output_dir, mode="merge")` to obtain the output
 `Path`. The fixed column order is `transaction_id`, `account_id`, `description`,
 `currency_code`, `amount`, `status`, `type`, `payer_document_number`, `payer_name`,
-`receiver_document_number`, `receiver_name`, `is_credit_card`, `created_at`,
+`receiver_document_number`, `receiver_name`, `is_credit_card`, `date`, `created_at`,
 `updated_at`. All columns are strings except `amount` (`decimal128(38,10)`) and
 `is_credit_card` (boolean). Timestamp casts use UTC; card flags are `true` or
 `false`. Description falls back to `description_raw` only for nulls.

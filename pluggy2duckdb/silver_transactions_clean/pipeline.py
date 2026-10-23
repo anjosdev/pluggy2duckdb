@@ -43,6 +43,7 @@ TRANSFORM_SQL = """
         CAST(json_extract_string(TRY_CAST(payment_data AS JSON),
             '$.receiver.name') AS VARCHAR) AS receiver_name,
         CAST(credit_card_metadata IS NOT NULL AS BOOLEAN) AS is_credit_card,
+        CAST(date AS VARCHAR) AS date,
         CAST(created_at AS VARCHAR) AS created_at,
         CAST(updated_at AS VARCHAR) AS updated_at
     FROM deduplicated

@@ -33,7 +33,8 @@ def test_projection_schema_precision_json_and_utc(tmp_path):
     source = write_input(tmp_path, [{
         "id": "tx", "account_id": "account", "description": None,
         "description_raw": "fallback", "currency_code": "BRL", "amount": amount,
-        "status": "POSTED", "type": "DEBIT", "created_at": stamp, "updated_at": stamp,
+        "status": "POSTED", "type": "DEBIT", "date": stamp - timedelta(days=1),
+        "created_at": stamp, "updated_at": stamp,
         "credit_card_metadata": "{}",
         "payment_data": json.dumps({
             "payer": {"name": "José", "documentNumber": {"value": "00123456789"}},
@@ -45,22 +46,23 @@ def test_projection_schema_precision_json_and_utc(tmp_path):
     assert table.schema.names == [
         "transaction_id", "account_id", "description", "currency_code", "amount",
         "status", "type", "payer_document_number", "payer_name",
-        "receiver_document_number", "receiver_name", "is_credit_card", "created_at", "updated_at",
+        "receiver_document_number", "receiver_name", "is_credit_card", "date", "created_at", "updated_at",
     ]
     assert table.schema.types == (
         [pa.string()] * 4 + [pa.decimal128(38, 10)] + [pa.string()] * 6
-        + [pa.bool_()] + [pa.string()] * 2
+        + [pa.bool_()] + [pa.string()] * 3
     )
     assert table.to_pylist() == [{
         "transaction_id": "tx", "account_id": "account", "description": "fallback",
         "currency_code": "BRL", "amount": amount, "status": "POSTED", "type": "DEBIT",
         "payer_document_number": "00123456789", "payer_name": "José",
         "receiver_document_number": "00001234567890", "receiver_name": "Loja",
-        "is_credit_card": True, "created_at": "2026-01-02 06:04:05.123456+00",
+        "is_credit_card": True, "date": "2026-01-01 06:04:05.123456+00",
+        "created_at": "2026-01-02 06:04:05.123456+00",
         "updated_at": "2026-01-02 06:04:05.123456+00",
     }]
     metadata = pq.read_metadata(output)
-    assert all(metadata.row_group(0).column(i).compression == "ZSTD" for i in range(14))
+    assert all(metadata.row_group(0).column(i).compression == "ZSTD" for i in range(15))
 
 
 @pytest.mark.parametrize("payment", [None, "", "{broken", "null", "{}", "[]", '{"payer":null}', '{"payer":{"documentNumber":{}}}'])

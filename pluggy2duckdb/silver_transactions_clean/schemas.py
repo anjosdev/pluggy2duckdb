@@ -16,6 +16,7 @@ OUTPUT_SCHEMA = pa.schema(
         ("receiver_document_number", pa.string()),
         ("receiver_name", pa.string()),
         ("is_credit_card", pa.bool_()),
+        ("date", pa.string()),
         ("created_at", pa.string()),
         ("updated_at", pa.string()),
     ]
@@ -32,6 +33,7 @@ REQUIRED_INPUT_COLUMNS = {
     "type",
     "payment_data",
     "credit_card_metadata",
+    "date",
     "created_at",
     "updated_at",
 }
