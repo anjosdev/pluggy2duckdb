@@ -1,10 +1,16 @@
 ![pluggy2duckdb](pluggy2duckdb.png)
 
-Fill `.env` and `items.yaml` as shown in `.env.example` and `items.yaml.example`, then run:
+Install the project dependencies with [uv](https://docs.astral.sh/uv/):
 
 ```bash
-docker compose run --rm raw
-docker compose run --rm silver
+uv sync
+```
+
+Fill `.env` and `items.yaml` as shown in `.env.example` and `items.yaml.example`. Then run the raw ingestion pipeline and the silver transformation pipeline from the project root:
+
+```bash
+uv run pluggy-raw
+uv run pluggy-silver
 ```
 
 ```python
