@@ -2,7 +2,7 @@ import argparse
 import logging
 from pathlib import Path
 
-from pluggy2duckdb.silver_transactions_clean.pipeline import run_transactions_clean
+from pluggy2duckdb.silver_clean.transactions.pipeline import run_transactions_clean
 
 
 def main(argv: list[str] | None = None) -> None:

@@ -20,7 +20,7 @@ dev = [
 [project.scripts]
 pluggy-raw = "pluggy2duckdb.raw.cli:main"
 pluggy-silver = "pluggy2duckdb.silver.cli:main"
-pluggy-silver-transactions-clean = "pluggy2duckdb.silver_transactions_clean.cli:main"
+pluggy-silver-transactions-clean = "pluggy2duckdb.silver_clean.transactions.cli:main"
 
 [build-system]
 requires = ["hatchling"]

@@ -12,9 +12,9 @@ import pyarrow.parquet as pq
 import pytest
 
 from pluggy2duckdb.silver.schemas import schema_for
-from pluggy2duckdb.silver_transactions_clean import run_transactions_clean
-from pluggy2duckdb.silver_transactions_clean import cli, pipeline
-from pluggy2duckdb.silver_transactions_clean.schemas import OUTPUT_SCHEMA
+from pluggy2duckdb.silver_clean.transactions import run_transactions_clean
+from pluggy2duckdb.silver_clean.transactions import cli, pipeline
+from pluggy2duckdb.silver_clean.transactions.schemas import OUTPUT_SCHEMA
 
 
 def write_input(tmp_path, rows, schema=None, name="input.parquet"):
@@ -129,7 +129,7 @@ def test_create_merge_replace_retain_idempotence_and_overwrite(tmp_path, caplog)
     ])
     caplog.set_level(logging.INFO, logger=pipeline.__name__)
     output = run_transactions_clean(source, tmp_path / "out")
-    assert output == tmp_path / "out/transactions_clean.parquet"
+    assert output == tmp_path / "out/transactions.parquet"
     write_input(tmp_path, [{"id": "a", "description": "replacement"}, {"id": "c"}])
     run_transactions_clean(source, output.parent)
     rows = read_rows(output)
@@ -242,7 +242,7 @@ def test_failures_preserve_output_and_remove_temporary_files(tmp_path, failure):
             run_transactions_clean(source, output.parent)
     assert output.read_bytes() == before
     assert unrelated.read_text() == "keep"
-    assert not list(output.parent.glob(".transactions_clean-*.parquet"))
+    assert not list(output.parent.glob(".transactions-*.parquet"))
 
 
 def test_writers_serialize_before_reading_existing_output(tmp_path):

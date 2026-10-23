@@ -13,14 +13,15 @@ uv run pluggy-raw
 uv run pluggy-silver
 ```
 
-Generate clean transaction data from the silver transactions:
+Generate clean transaction data from the silver transactions using the pipeline in
+`pluggy2duckdb/silver_clean/transactions`:
 
 ```bash
 uv run pluggy-silver-transactions-clean
 ```
 
 By default, the clean pipeline reads `data/silver/transactions.parquet`, writes to
-`data/silver_clean/transactions_clean.parquet`, and merges with existing output.
+`data/silver_clean/transactions.parquet`, and merges with existing output.
 To overwrite the output, or specify different input and output paths, use:
 
 ```bash

@@ -9,7 +9,7 @@ from pathlib import Path
 import duckdb
 import pyarrow.parquet as pq
 
-from pluggy2duckdb.silver_transactions_clean.schemas import (
+from pluggy2duckdb.silver_clean.transactions.schemas import (
     OUTPUT_SCHEMA,
     REQUIRED_INPUT_COLUMNS,
 )
@@ -86,9 +86,9 @@ def run_transactions_clean(
         raise ValueError("mode must be 'merge' or 'overwrite'")
     input_path, output_dir = Path(input_path), Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
-    destination = output_dir / "transactions_clean.parquet"
+    destination = output_dir / "transactions.parquet"
     # Keep this lock file: unlinking it would allow writers to lock different inodes.
-    with (output_dir / ".transactions_clean.lock").open("a") as lock:
+    with (output_dir / ".transactions.lock").open("a") as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         with duckdb.connect(":memory:") as con:
             con.execute("SET TimeZone = 'UTC'")
@@ -130,7 +130,7 @@ def run_transactions_clean(
                 query += f" UNION ALL {retained}"
             relation = con.sql(f"SELECT * FROM ({query}) ORDER BY transaction_id")
             fd, filename = tempfile.mkstemp(
-                prefix=".transactions_clean-", suffix=".parquet", dir=output_dir
+                prefix=".transactions-", suffix=".parquet", dir=output_dir
             )
             os.close(fd)
             temporary = Path(filename)
@@ -142,7 +142,7 @@ def run_transactions_clean(
             finally:
                 temporary.unlink(missing_ok=True)
             logger.info(
-                "transactions_clean: mode=%s input_rows=%d incoming_rows=%d "
+                "silver_clean.transactions: mode=%s input_rows=%d incoming_rows=%d "
                 "duplicates=%d existing_rows=%d replaced_rows=%d retained_rows=%d output_rows=%d",
                 mode,
                 input_rows,
