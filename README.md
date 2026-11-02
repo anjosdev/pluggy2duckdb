@@ -1,5 +1,15 @@
 ![pluggy2duckdb](pluggy2duckdb.png)
 
+## Non-affiliation notice
+
+This repository is an independent community project. It is not affiliated with,
+endorsed by, sponsored by, or maintained by Pluggy. References to Pluggy identify
+the API this project integrates with and do not imply any official relationship.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 Install the project dependencies with [uv](https://docs.astral.sh/uv/):
 
 ```bash
