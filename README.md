@@ -1,5 +1,3 @@
-![pluggy2duckdb](pluggy2duckdb.png)
-
 Install the project dependencies with [uv](https://docs.astral.sh/uv/):
 
 ```bash
