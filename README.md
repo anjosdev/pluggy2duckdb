@@ -1,5 +1,3 @@
-![pluggy2duckdb](pluggy2duckdb.png)
-
 ## Non-affiliation notice
 
 This repository is an independent community project. It is not affiliated with,
